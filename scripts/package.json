@@ -1,0 +1,8 @@
+{
+  "name": "tether-notify-scheduler",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "firebase-admin": "^12.1.0"
+  }
+}

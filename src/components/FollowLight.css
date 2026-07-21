@@ -1,0 +1,63 @@
+.followlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.followlight__hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.followlight__area {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-soft);
+  overflow: hidden;
+  touch-action: none;
+  margin-top: 20px;
+}
+
+.followlight__dot {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--lavender), var(--bg-surface-2) 75%);
+  box-shadow: 0 0 20px rgba(180, 174, 222, 0.4);
+  transform: translate(-50%, -50%);
+  transition: box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.followlight__dot--tracked {
+  background: radial-gradient(circle at 35% 30%, var(--glow-gold), var(--bg-surface-2) 75%);
+  box-shadow: 0 0 34px var(--glow-gold-soft);
+}
+
+.followlight__progress {
+  width: 100%;
+  height: 4px;
+  border-radius: 100px;
+  background: var(--bg-surface);
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.followlight__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--lavender), var(--glow-gold));
+  transition: width 0.1s linear;
+}
+
+.followlight__done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+}

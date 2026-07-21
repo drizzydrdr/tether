@@ -1,0 +1,100 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 48px;
+}
+
+.home__title {
+  font-size: 26px;
+  margin-top: 10px;
+  max-width: 280px;
+}
+
+.home__sub {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.home__orb-wrap {
+  margin: 44px 0 28px;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The signature element: a soft orb that warms from lavender toward gold
+   as more of today's check-ins were spent present rather than elsewhere. */
+.home__orb {
+  --presence: 0.5;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    color-mix(in srgb, var(--glow-gold) calc(var(--presence) * 100%), var(--lavender)) 0%,
+    color-mix(in srgb, var(--bg-surface-2) 60%, transparent) 70%
+  );
+  box-shadow:
+    0 0 60px color-mix(in srgb, var(--glow-gold) calc(var(--presence) * 60%), transparent),
+    inset 0 0 40px rgba(255,255,255,0.06);
+  animation: breathe 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.home__stat {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.home__stat--muted {
+  color: var(--text-muted);
+}
+
+.home__catch-btn {
+  margin-top: 56px;
+  width: 100%;
+  max-width: 320px;
+  padding: 20px 24px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, var(--bg-surface-2), var(--bg-surface));
+  border: 1px solid var(--glow-gold-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 0.2s var(--ease-soft), border-color 0.2s var(--ease-soft);
+}
+
+.home__catch-btn:active {
+  transform: scale(0.97);
+  border-color: var(--glow-gold);
+}
+
+.home__catch-btn-label {
+  font-family: var(--font-display);
+  font-size: 19px;
+  color: var(--glow-gold);
+}
+
+.home__catch-btn-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.home__catch-btn--secondary {
+  margin-top: 14px;
+  border-color: rgba(180, 174, 222, 0.3);
+}
+
+.home__catch-btn--secondary .home__catch-btn-label {
+  color: var(--lavender);
+}

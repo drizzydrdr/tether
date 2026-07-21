@@ -1,0 +1,237 @@
+.checkin__step {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: calc(100dvh - 220px);
+}
+
+.checkin__step h1 {
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.checkin__choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.checkin__choices--two {
+  flex-direction: row;
+}
+
+.checkin__choices--three {
+  flex-direction: row;
+}
+
+.choice {
+  flex: 1;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-soft);
+  color: var(--text-primary);
+  font-size: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 0.2s var(--ease-soft);
+}
+
+.checkin__choices--two .choice,
+.checkin__choices--three .choice {
+  text-align: center;
+  align-items: center;
+}
+
+.choice:active {
+  transform: scale(0.97);
+}
+
+.choice--selected {
+  border-color: var(--glow-gold);
+  background: var(--glow-gold-soft);
+  color: var(--glow-gold);
+}
+
+.choice--wide {
+  width: 100%;
+}
+
+.choice__label {
+  font-family: var(--font-display);
+  font-size: 16px;
+}
+
+.choice__hint, .choice__note {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.choice--selected .choice__hint,
+.choice--selected .choice__note {
+  color: color-mix(in srgb, var(--glow-gold) 70%, var(--text-muted));
+}
+
+.checkin__toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 4px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.checkin__toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.checkin__toggle button {
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-soft);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.checkin__toggle .toggle--on {
+  background: var(--glow-gold-soft);
+  border-color: var(--glow-gold);
+  color: var(--glow-gold);
+}
+
+.checkin__next {
+  margin-top: auto;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--glow-gold);
+  color: var(--bg-deep);
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  transition: opacity 0.2s var(--ease-soft);
+}
+
+.checkin__next:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.checkin__gentle-line {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  padding: 12px 0 8px;
+}
+
+.checkin__line-attribution {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--glow-gold);
+  letter-spacing: 0.03em;
+}
+
+.checkin__ladder {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ladder-option {
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  transition: all 0.2s var(--ease-soft);
+}
+
+.ladder-option:active {
+  transform: scale(0.97);
+  border-color: var(--glow-gold);
+}
+
+.ladder-option__title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--glow-gold);
+}
+
+.ladder-option__sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.checkin__breathing-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 21, 42, 0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  padding: 40px;
+}
+
+.breathing-orb {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--glow-gold), var(--bg-surface-2) 75%);
+  box-shadow: 0 0 70px var(--glow-gold-soft);
+  animation: breathing-pulse 8s ease-in-out infinite;
+}
+
+@keyframes breathing-pulse {
+  0%, 100% { transform: scale(0.85); }
+  40% { transform: scale(1.15); }
+  60% { transform: scale(1.15); }
+}
+
+.breathing-round {
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.checkin__wonder-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-primary);
+  max-width: 300px;
+}
+
+.checkin__done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  margin-top: 80px;
+}
+
+.checkin__done-orb {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--sage), var(--bg-surface-2) 75%);
+  margin-bottom: 12px;
+}
+
+.checkin__done-sub {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 24px;
+}

@@ -1,0 +1,232 @@
+.northstar {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- living starfield: three depths, slow independent twinkle --- */
+.northstar__starfield {
+  position: absolute;
+  inset: -20px -20px auto -20px;
+  height: 340px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 18%, rgba(233, 231, 245, 0.7), transparent),
+    radial-gradient(1px 1px at 28% 42%, rgba(233, 231, 245, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 45% 12%, rgba(233, 231, 245, 0.6), transparent),
+    radial-gradient(1px 1px at 62% 35%, rgba(233, 231, 245, 0.35), transparent),
+    radial-gradient(1.5px 1.5px at 78% 8%, rgba(233, 231, 245, 0.55), transparent),
+    radial-gradient(1px 1px at 88% 28%, rgba(233, 231, 245, 0.4), transparent),
+    radial-gradient(1.5px 1.5px at 8% 65%, rgba(233, 231, 245, 0.5), transparent),
+    radial-gradient(1px 1px at 35% 78%, rgba(233, 231, 245, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 68% 82%, rgba(233, 231, 245, 0.5), transparent),
+    radial-gradient(1px 1px at 92% 70%, rgba(233, 231, 245, 0.35), transparent),
+    radial-gradient(1px 1px at 18% 88%, rgba(233, 231, 245, 0.3), transparent),
+    radial-gradient(1px 1px at 55% 60%, rgba(233, 231, 245, 0.25), transparent);
+  animation: twinkle 7s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.northstar__constellation {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 10px auto 0;
+  display: block;
+  position: relative;
+}
+
+.northstar__title {
+  font-size: 20px;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+.northstar__briefing {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.northstar__moon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 24px 0 8px;
+  background: conic-gradient(var(--glow-gold) calc(var(--illum) * 1%), var(--bg-surface-2) 0);
+  box-shadow: 0 0 80px var(--glow-gold-soft);
+  animation: breathe 8s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Greek key / meander divider, used between sections --- */
+.northstar__meander {
+  width: 100%;
+  max-width: 300px;
+  height: 14px;
+  margin: 36px 0;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14'%3E%3Cpath d='M0,7 H8 V1 H16 V13 H24 V1 H32 V13 H40' stroke='%23C9A961' stroke-width='1.4' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 40px 14px;
+}
+
+/* --- scroll-reveal: sections rise and fade in as they enter view --- */
+.reveal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease-soft), transform 0.7s var(--ease-soft);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.northstar__loading {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-family: var(--font-mono);
+}
+
+.northstar__apod {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.northstar__apod img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(201, 169, 97, 0.25);
+}
+
+.northstar__apod-title {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-primary);
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.northstar__apod-explanation {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 340px;
+  text-align: left;
+}
+
+.northstar__fallback {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 280px;
+}
+
+/* --- inscription-style quote: marble surface, rule lines instead of a
+   rounded card, wide-tracked small caps for the "carved" feel --- */
+.northstar__quote-card {
+  width: 100%;
+  max-width: 340px;
+  padding: 30px 20px;
+  position: relative;
+  background:
+    linear-gradient(135deg, transparent 42%, rgba(233, 231, 245, 0.035) 43%, transparent 44%),
+    linear-gradient(100deg, transparent 58%, rgba(233, 231, 245, 0.03) 59%, transparent 61%),
+    linear-gradient(160deg, var(--bg-surface-2), var(--bg-surface));
+  border-top: 1px solid rgba(201, 169, 97, 0.45);
+  border-bottom: 1px solid rgba(201, 169, 97, 0.45);
+  text-align: center;
+}
+
+.northstar__quote-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--text-primary);
+  animation: quote-fade 0.5s var(--ease-soft);
+}
+
+@keyframes quote-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.northstar__quote-author {
+  margin-top: 12px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--glow-gold);
+}
+
+.northstar__quote-hint {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.northstar__myth {
+  width: 100%;
+  max-width: 320px;
+  text-align: left;
+}
+
+.northstar__myth .eyebrow {
+  text-align: center;
+  letter-spacing: 0.12em;
+}
+
+.northstar__myth-text {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.northstar__manifesto {
+  width: 100%;
+  max-width: 340px;
+  text-align: left;
+}
+
+.northstar__manifesto-text {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}

@@ -1,0 +1,28 @@
+name: Notification scheduler
+
+on:
+  schedule:
+    # Every 20 minutes — must match RUN_INTERVAL_MINUTES in scripts/send-notification.js
+    - cron: '*/20 * * * *'
+  workflow_dispatch: {} # lets you trigger a test run manually from the Actions tab
+
+jobs:
+  maybe-notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install scheduler dependencies
+        working-directory: scripts
+        run: npm install
+
+      - name: Run scheduler
+        working-directory: scripts
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          TIMEZONE_OFFSET_HOURS: ${{ vars.TIMEZONE_OFFSET_HOURS }}
+        run: node send-notification.js

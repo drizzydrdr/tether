@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* --- Tether design tokens --- */
+  --bg-deep:      #14152A;   /* base night sky */
+  --bg-surface:   #1E2040;   /* raised panels */
+  --bg-surface-2: #262A52;   /* deeper raised, active states */
+  --line-soft:    rgba(201, 198, 224, 0.12);
+
+  --text-primary:   #E9E7F5;
+  --text-secondary: #9A97C2;
+  --text-muted:     #6B6890;
+
+  --glow-gold:    #E8C97A;   /* the one warm accent — presence, coming back */
+  --glow-gold-soft: rgba(232, 201, 122, 0.16);
+  --lavender:     #B4AEDE;   /* secondary accent, calm actions */
+  --sage:         #8FA98C;   /* grounded / present state */
+  --rose-dim:     #C79BA0;   /* crush tag, used sparingly, never alarming */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: env(safe-area-inset-top);
+}
+
+/* subtle ambient glow behind everything, like dusk light */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(232, 201, 122, 0.08), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 100% 100%, rgba(180, 174, 222, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+p { margin: 0; }
+
+button {
+  font-family: var(--font-body);
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--glow-gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.screen {
+  flex: 1;
+  padding: 28px 22px 100px;
+  position: relative;
+  z-index: 1;
+  animation: fade-in 0.4s var(--ease-soft);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
